@@ -11,16 +11,49 @@ import CTA from '../components/Sections/CTA'
 
 const Index = () => {
 
-  const wHeight = window.innerHeight;
+  const [wHeight, setWHeight] = useState(window.innerHeight);
   const [bgColor, setBgColor] = useState('#ffffff');
   const [textColor, setTextColor] = useState('#000000');
   
 
   const handleScroll = () => {
-      window.pageYOffset>(wHeight*2) ? setBgColor("#000000"): setBgColor("#ffffff"); 
-      window.pageYOffset>(wHeight*2) ? setTextColor("#ffffff"): setTextColor("#000000"); 
+      switch(true){
+        case (window.pageYOffset<(wHeight*1.5)):
+          setBgColor("#ffffff");
+          setTextColor("#000000");
+          break;
+        case ((window.pageYOffset>(wHeight*1.5))&&(window.pageYOffset<(wHeight*3.5))):
+          setBgColor("#000000");
+          setTextColor("#ffffff");
+          break;
+        case ((window.pageYOffset>(wHeight*3.5))&&(window.pageYOffset<(wHeight*6))):
+          setBgColor("#ffffff");
+          setTextColor("#000000");
+          break;
+        case ((window.pageYOffset>(wHeight*6))&&(window.pageYOffset<(wHeight*8))):
+          setBgColor("#000000");
+          setTextColor("#ffffff");
+          break;
+        case ((window.pageYOffset>(wHeight*8))):
+          setBgColor("#ffffff");
+          setTextColor("#000000");
+          break;
       }
+    }
+      // ((window.pageYOffset>(wHeight*1.5))&&(window.pageYOffset<(wHeight*3.5))) ? setBgColor("#000000"): setBgColor("#ffffff"); 
+      // ((window.pageYOffset>(wHeight*1.5))&&(window.pageYOffset<(wHeight*3.5))) ? setTextColor("#ffffff"): setTextColor("#000000");
+      // ((window.pageYOffset>(wHeight*3.5))&&(window.pageYOffset<(wHeight*5.5))) ? setBgColor("#ffffff"): setBgColor("#000000"); 
+      // ((window.pageYOffset>(wHeight*3.5))&&(window.pageYOffset<(wHeight*5.5))) ? setTextColor("#000000"): setTextColor("#ffffff"); 
+      // ((window.pageYOffset>(wHeight*5.5))&&(window.pageYOffset<(wHeight*7.5))) ? setBgColor("#000000"): setBgColor("#ffffff"); 
+      // ((window.pageYOffset>(wHeight*5.5))&&(window.pageYOffset<(wHeight*7.5))) ? setTextColor("#ffffff"): setTextColor("#000000");
+      // (window.pageYOffset>(wHeight*7.5)) ? setBgColor("#ffffff"): setBgColor("#000000"); 
+      // (window.pageYOffset>(wHeight*7.5)) ? setTextColor("#000000"): setTextColor("#ffffff"); 
+      // }
   
+  const handleResize = () => {
+    setWHeight(window.innerHeight);
+  }
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
       
@@ -28,6 +61,11 @@ const Index = () => {
       window.removeEventListener('scroll', handleScroll);
   }, []);
   
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <Layout bgColor={bgColor} textColor={textColor}>
