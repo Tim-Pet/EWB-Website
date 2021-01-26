@@ -1,7 +1,6 @@
 import React from 'react'
-
 import Navbar from "./Navbar"
-import Sidebar from './Sidebar'
+import Overlay from './Overlay'
 import { GlobalStyle } from "./styles/GlobalStyles"
 
 const Layout = ({children}) => {
@@ -9,7 +8,7 @@ const Layout = ({children}) => {
         <>
             <GlobalStyle />
             <Navbar />
-            <Sidebar />
+            <Overlay />
             <main>{children}</main>
         </>
     )

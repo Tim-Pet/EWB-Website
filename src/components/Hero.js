@@ -35,7 +35,7 @@ const BigTextWrapper = styled.div`
 `
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
-    font-weight: 900;
+    font-weight: ${variables.fw_bold};
     font-style: italic;
     text-align: right;
     text-transform: uppercase;
