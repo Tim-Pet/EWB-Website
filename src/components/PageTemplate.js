@@ -2,29 +2,29 @@ import React from 'react'
 import styled from 'styled-components'
 import * as variables from "./styles/variables"
 
-const White = () => {
+const PageTemplate = (props) => {
     return (
         <div>
-            <Container>
+            <Container color={props.color}>
                 <BigTextWrapper>
-                    <BigText>Und</BigText>
-                    <BigText>Noch</BigText>
-                    <BigText>Eine?</BigText>
+                    {props.bigText.map((item, index) => (
+                    <BigText color={props.color} key={index}>{item}</BigText>
+                    ))}
                 </BigTextWrapper>
                 <SmallTextWrapper>
-                    <SmallText>Ja, wir wollen eine neue Bibel.</SmallText>
-                    <SmallText>Die Bibel muss nicht <strong>anders</strong> sein. Aber</SmallText>
-                    <SmallText>unsere Gesellschaft ist nun anders</SmallText>
-                    <SmallText>erreichbar als noch vor Jahren</SmallText>
+                    {props.smallText.map((item, index) => (
+                    <SmallText color={props.color} key={index}>{item}</SmallText>
+                    ))}
                 </SmallTextWrapper>
             </Container>
         </div>
     )
 }
 
-export default White
+export default PageTemplate
 
 const Container = styled.div`
+    background-color: ${({color}) => (color==='black' ? '#000000' : '#ffffff')};
     display: grid;
     grid-template-columns: 0.5fr 1.25fr 0.125fr 1fr 0.5fr;
 `
@@ -43,8 +43,8 @@ const BigText = styled.h1`
     font-size: 5rem;
     line-height: 3.5rem;
     letter-spacing: 4px;
-    color: white;
-    -webkit-text-stroke: 2px black;
+    color: ${({color}) => (color ==='black' ? '#000000' : '#ffffff')};
+    -webkit-text-stroke: 2px ${({color}) => (color==='black' ? '#ffffff' : '#000000')};;
     text-align: right;
 `
 const SmallTextWrapper = styled.div`
@@ -56,8 +56,10 @@ const SmallTextWrapper = styled.div`
 `
 const SmallText = styled.p`
     font-family: ${variables.f_primary};
-    text-transform: uppercase;
     font-size: 1.125rem;
-    letter-spacing: 1px;
+    color: ${({color}) => (color==='black' ? '#ffffff' : '#000000')};
     line-height: 2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
 `

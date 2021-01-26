@@ -7,7 +7,7 @@ export const Button = styled(Link)`
     display: inline-block;
     padding: 15px 30px;
     border: 2px solid #111111;
-    border-radius: 10px;
+    border-radius: 5px;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: #111111;
@@ -19,10 +19,10 @@ export const Button = styled(Link)`
     &:before {
     content: '';
     position: absolute;
-    top: 10%;
+    top: 25%;
     left: -3px;
     right: -3px;
-    height: 80%;
+    height: 50%;
     background: #fff;
     transition: 0.5s ease-in-out;
     transform: scaleY(1);
@@ -35,10 +35,10 @@ export const Button = styled(Link)`
     &:after {
     content: '';
     position: absolute;
-    left: 5%;
+    left: 15%;
     top: -3px;
     bottom: -3px;
-    width: 90%;
+    width: 70%;
     background: #fff;
     transition: 0.5s ease-in-out;
     transform: scaleX(1);

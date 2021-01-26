@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import * as variables from "./styles/variables"
+import * as variables from "../styles/variables"
 
 const Hero = () => {
     return (

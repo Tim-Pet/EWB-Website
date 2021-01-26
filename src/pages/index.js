@@ -1,14 +1,24 @@
 import React from 'react'
-import Hero from '../components/Hero'
+import Hero from '../components/Sections/Hero'
+import Intro from '../components/Sections/Intro'
 import Layout from '../components/Layout'
 import ParallaxEffect from '../components/ParallaxEffect'
-import White from '../components/White'
+import Dream from '../components/Sections/Dream'
+import Format from '../components/Sections/Format'
+import LayoutSection from '../components/Sections/LayoutSection'
+import Content from '../components/Sections/Content'
+import CTA from '../components/Sections/CTA'
 
 const index = () => {
   return (
     <Layout>
       <Hero />
-      <White />
+      <Intro />
+      <Dream />
+      <Format />
+      <LayoutSection />
+      <Content />
+      <CTA />
     </Layout>
   )
 }
