@@ -1,7 +1,9 @@
 import React from 'react'
+import styled from 'styled-components'
 import PageTemplate from '../PageTemplate'
+import Book from '../Book'
 
-const Format = () => {
+const Format = (props) => {
 
     const bigText = 
         [
@@ -22,10 +24,26 @@ const Format = () => {
     ]
     return (
         <div>
-            <PageTemplate color={'white'} bigText={bigText} smallText={smallText1} />
-            <PageTemplate color={'white'} bigText={bigText} smallText={smallText2} />
+            <FormatSectionWrapper>
+                <PageTemplate bgColor={props.bgColor} textColor={props.textColor} bigText={bigText} smallText={smallText1} />
+                <PageTemplate bgColor={props.bgColor} textColor={props.textColor} bigText={bigText} smallText={smallText2} />
+                <TextBook />
+            </FormatSectionWrapper>
         </div>
     )
 }
 
 export default Format
+
+const FormatSectionWrapper = styled.div`
+    z-index: 2;
+    position: relative;
+`
+
+const TextBook = styled(Book)`
+    position: absolute;
+    top: 160vh;
+    left: 25vw;
+    height: 250px;
+    width: auto;
+`

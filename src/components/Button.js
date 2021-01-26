@@ -6,11 +6,11 @@ export const Button = styled(Link)`
     position: relative;
     display: inline-block;
     padding: 15px 30px;
-    border: 2px solid #111111;
+    border: 2px solid ${props => props.textColor};
     border-radius: 5px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #111111;
+    color: ${props => props.textColor};
     text-decoration: none;
     font-weight: ${variables.fw_light};
     font-size: 20px;
@@ -23,8 +23,8 @@ export const Button = styled(Link)`
     left: -3px;
     right: -3px;
     height: 50%;
-    background: #fff;
-    transition: 0.5s ease-in-out;
+    background: ${props => props.bgColor};
+    transition: transform 0.5s ease-in-out, background-color 1s;
     transform: scaleY(1);
     }
 
@@ -39,8 +39,9 @@ export const Button = styled(Link)`
     top: -3px;
     bottom: -3px;
     width: 70%;
-    background: #fff;
-    transition: 0.5s ease-in-out;
+    background: ${props => props.bgColor};
+    transition: background-color 3s;
+    transition: transform 0.5s ease-in-out, background-color 1s;
     transform: scaleX(1);
     }
 

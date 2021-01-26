@@ -1,7 +1,7 @@
 import React from 'react'
 import PageTemplate from '../PageTemplate'
 
-const Content = () => {
+const Content = (props) => {
 
     const bigText = 
         [
@@ -25,8 +25,8 @@ const Content = () => {
 
     return (
         <div>
-            <PageTemplate color={'white'} bigText={bigText} smallText={smallText1} />
-            <PageTemplate color={'white'} bigText={bigText} smallText={smallText2} />
+            <PageTemplate bgColor={props.bgColor} textColor={props.textColor} bigText={bigText} smallText={smallText1} />
+            <PageTemplate bgColor={props.bgColor} textColor={props.textColor} bigText={bigText} smallText={smallText2} />
         </div>
     )
 }

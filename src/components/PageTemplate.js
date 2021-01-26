@@ -5,15 +5,15 @@ import * as variables from "./styles/variables"
 const PageTemplate = (props) => {
     return (
         <div>
-            <Container color={props.color}>
+            <Container bgColor={props.bgColor} textColor={props.textColor}>
                 <BigTextWrapper>
                     {props.bigText.map((item, index) => (
-                    <BigText color={props.color} key={index}>{item}</BigText>
+                    <BigText bgColor={props.bgColor} textColor={props.textColor} key={index}>{item}</BigText>
                     ))}
                 </BigTextWrapper>
                 <SmallTextWrapper>
                     {props.smallText.map((item, index) => (
-                    <SmallText color={props.color} key={index}>{item}</SmallText>
+                    <SmallText bgColor={props.bgColor} textColor={props.textColor} key={index}>{item}</SmallText>
                     ))}
                 </SmallTextWrapper>
             </Container>
@@ -24,7 +24,8 @@ const PageTemplate = (props) => {
 export default PageTemplate
 
 const Container = styled.div`
-    background-color: ${({color}) => (color==='black' ? '#000000' : '#ffffff')};
+    background-color: ${props => props.bgColor};
+    transition: background-color 1s;
     display: grid;
     grid-template-columns: 0.5fr 1.25fr 0.125fr 1fr 0.5fr;
 `
@@ -43,8 +44,9 @@ const BigText = styled.h1`
     font-size: 5rem;
     line-height: 3.5rem;
     letter-spacing: 4px;
-    color: ${({color}) => (color ==='black' ? '#000000' : '#ffffff')};
-    -webkit-text-stroke: 2px ${({color}) => (color==='black' ? '#ffffff' : '#000000')};;
+    color: white;
+    -webkit-text-stroke: 2px ${props => props.textColor};
+    transition: color 1s;
     text-align: right;
 `
 const SmallTextWrapper = styled.div`
@@ -57,7 +59,7 @@ const SmallTextWrapper = styled.div`
 const SmallText = styled.p`
     font-family: ${variables.f_primary};
     font-size: 1.125rem;
-    color: ${({color}) => (color==='black' ? '#ffffff' : '#000000')};
+    color: ${props => props.textColor};
     line-height: 2rem;
     letter-spacing: 1px;
     text-transform: uppercase;

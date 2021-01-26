@@ -3,12 +3,12 @@ import Navbar from "./Navbar"
 import Overlay from './Overlay'
 import { GlobalStyle } from "./styles/GlobalStyles"
 
-const Layout = ({children}) => {
+const Layout = ({children, bgColor, textColor}) => {
     return (
         <>
             <GlobalStyle />
-            <Navbar />
-            <Overlay />
+            <Navbar bgColor={bgColor} textColor={textColor}/>
+            <Overlay bgColor={bgColor} textColor={textColor} />
             <main>{children}</main>
         </>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import * as variables from "../styles/variables"
 
-const Hero = () => {
+const Hero = (props) => {
     return (
         <div>
             <HeroContainer>
