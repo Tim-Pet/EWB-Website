@@ -8,6 +8,7 @@ module.exports = {
       options: {
         // Add any options here
       }
-    }
+    },
+    //new plugin here
   ],
 };

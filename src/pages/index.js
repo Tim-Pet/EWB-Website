@@ -38,6 +38,10 @@ const Index = () => {
           setBgColor("#ffffff");
           setTextColor("#000000");
           break;
+        default:
+          setBgColor("#ffffff");
+          setTextColor("#000000");
+          break;
       }
     }
       // ((window.pageYOffset>(wHeight*1.5))&&(window.pageYOffset<(wHeight*3.5))) ? setBgColor("#000000"): setBgColor("#ffffff"); 
