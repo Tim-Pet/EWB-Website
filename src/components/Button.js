@@ -6,15 +6,18 @@ export const Button = styled(Link)`
     position: relative;
     display: inline-block;
     padding: 15px 30px;
-    border: 2px solid ${props => props.textColor};
+    border: 2px solid ;
     border-radius: 5px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: ${props => props.textColor};
     text-decoration: none;
     font-weight: ${variables.fw_light};
     font-size: 20px;
     cursor: pointer;
+
+    &:visited {
+        color: inherit;
+    }
 
     &:before {
     content: '';
@@ -40,7 +43,6 @@ export const Button = styled(Link)`
     bottom: -3px;
     width: 70%;
     background: ${props => props.bgColor};
-    transition: background-color 3s;
     transition: transform 0.5s ease-in-out, background-color 1s;
     transform: scaleX(1);
     }

@@ -27,7 +27,6 @@ const Format = (props) => {
             <FormatSectionWrapper>
                 <PageTemplate bgColor={props.bgColor} textColor={props.textColor} bigText={bigText} smallText={smallText1} />
                 <PageTemplate bgColor={props.bgColor} textColor={props.textColor} bigText={bigText} smallText={smallText2} />
-                <TextBook />
             </FormatSectionWrapper>
         </div>
     )
@@ -40,10 +39,10 @@ const FormatSectionWrapper = styled.div`
     position: relative;
 `
 
-const TextBook = styled(Book)`
-    position: absolute;
-    top: 160vh;
-    left: 25vw;
-    height: 250px;
-    width: auto;
-`
+// const TextBook = styled(Book)`
+//     position: absolute;
+//     top: 160vh;
+//     left: 25vw;
+//     height: 250px;
+//     width: auto;
+// `

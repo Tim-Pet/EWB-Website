@@ -14,3 +14,4 @@ export const fw_light = '400';
 export const fs_small = '';
 export const fs_medium = '';
 export const fs_big = '';
+export const tr_duration = '1s';
