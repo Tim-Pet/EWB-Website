@@ -8,7 +8,7 @@ const Layout = ({children, bgColor, textColor}) => {
         <>
             <GlobalStyle />
             <Navbar bgColor={bgColor} textColor={textColor}/>
-            <Overlay bgColor={bgColor} textColor={textColor} />
+            <Overlay bgColor={bgColor} textColor={textColor}/>
             <main>{children}</main>
         </>
     )

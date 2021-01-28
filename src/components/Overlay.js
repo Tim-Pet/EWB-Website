@@ -8,10 +8,10 @@ import Sidebar from './Sidebar'
 const Overlay = (props) => {
     return (
         <div>
-            <Sidebar bgColor={props.bgColor} textColor={props.textColor}/>
+            <Sidebar />
             <HeadText>Ein noch weißes Blatt</HeadText>
             <BtnWrapper>
-                <Button bgColor={props.bgColor} textColor={props.textColor} to="/"><span>Mitmachen</span></Button>
+                <Button bgColor={props.bgColor} to="/"><span>Mitmachen</span></Button>
             </BtnWrapper>
         </div>
     )

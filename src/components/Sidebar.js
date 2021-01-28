@@ -1,26 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
+import * as variables from "./styles/variables"
 
-const Sidebar = (props) => {
+const Sidebar = () => {
     return (
         <div>
-            <SidebarContainer bgColor={props.bgColor} textColor={props.textColor}>
+            <SidebarContainer >
                 <SidebarWrapper>
-                    <Line bgColor={props.bgColor} textColor={props.textColor}/>
+                    <Line />
                     <Text >Eine neue Bibel</Text>
-                    <Line bgColor={props.bgColor} textColor={props.textColor}/>
+                    <Line />
                     <Dot />
                 </SidebarWrapper>
                 <SidebarWrapper>
-                    <Line bgColor={props.bgColor} textColor={props.textColor}/>
+                    <Line />
                     <Text>Was soll's werden?</Text>
-                    <Line bgColor={props.bgColor} textColor={props.textColor}/>
+                    <Line />
                     <Dot />
                 </SidebarWrapper>
                 <SidebarWrapper>
-                    <Line bgColor={props.bgColor} textColor={props.textColor}/>
+                    <Line />
                     <Text>Machst du mit?</Text>
-                    <Line bgColor={props.bgColor} textColor={props.textColor}/>
+                    <Line />
                 </SidebarWrapper>
             </SidebarContainer>
         </div>
@@ -30,7 +31,6 @@ const Sidebar = (props) => {
 export default Sidebar
 
 const SidebarContainer = styled.div`
-    color: ${props => props.textColor};
     width: 10vh;
     height: 100vh;
     position: fixed;
@@ -48,28 +48,25 @@ const SidebarWrapper = styled.div`
 
 const Line = styled.div`
     width: 1px;
-    border: 1px solid ${props => props.textColor};
-    transition: border 2s;
+    border-width: 1px;
+    border-style: solid;
     margin: 5px 0;
     flex: 1 1 auto;
 `
 
 const Text = styled.div`
-    transition: color 2s;
     white-space: nowrap;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     height: auto;
     text-transform: uppercase;
     mix-blend-mode: difference;
-    /* transform: rotate(270deg);
-    transform-origin: left; */
 `
 
 const Dot = styled.div`
     height: 5px;
     width: 5px;
-    background-color: #bbb;
+    background-color: ${variables.clr_secondary};
     border-radius: 50%;
     display: inline-block;
 `

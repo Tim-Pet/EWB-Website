@@ -5,15 +5,15 @@ import * as variables from "./styles/variables"
 const PageTemplate = (props) => {
     return (
         <div>
-            <Container bgColor={props.bgColor} textColor={props.textColor}>
+            <Container>
                 <BigTextWrapper>
                     {props.bigText.map((item, index) => (
-                    <BigText bgColor={props.bgColor} textColor={props.textColor} key={index}>{item}</BigText>
+                    <BigText textColor={props.textColor} key={index}>{item}</BigText>
                     ))}
                 </BigTextWrapper>
                 <SmallTextWrapper>
                     {props.smallText.map((item, index) => (
-                    <SmallText bgColor={props.bgColor} textColor={props.textColor} key={index}>{item}</SmallText>
+                    <SmallText key={index}>{item}</SmallText>
                     ))}
                 </SmallTextWrapper>
             </Container>
@@ -24,8 +24,6 @@ const PageTemplate = (props) => {
 export default PageTemplate
 
 const Container = styled.div`
-    background-color: ${props => props.bgColor};
-    transition: background-color 1s;
     display: grid;
     grid-template-columns: 0.5fr 1.25fr 0.125fr 1fr 0.5fr;
 `
@@ -34,11 +32,10 @@ const BigTextWrapper = styled.div`
     padding-top: 40vh;
     grid-row-start: 1;
     grid-column: 2 / 4;
-    /* border: 2px solid red; */
 `
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
-    font-weight: 900;
+    font-weight: ${variables.fw_bold};
     font-style: italic;
     text-transform: uppercase;
     font-size: 5rem;
@@ -46,7 +43,6 @@ const BigText = styled.h1`
     letter-spacing: 4px;
     color: white;
     -webkit-text-stroke: 2px ${props => props.textColor};
-    transition: color 1s;
     text-align: right;
 `
 const SmallTextWrapper = styled.div`
@@ -54,12 +50,10 @@ const SmallTextWrapper = styled.div`
     padding-top: 60vh;
     grid-column: 3 / 5;
     grid-row-start: 1;
-    /* border: 2px solid black; */
 `
 const SmallText = styled.p`
     font-family: ${variables.f_primary};
     font-size: 1.125rem;
-    color: ${props => props.textColor};
     line-height: 2rem;
     letter-spacing: 1px;
     text-transform: uppercase;

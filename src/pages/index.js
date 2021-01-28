@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
+import * as variables from '../components/styles/variables'
+
 import Hero from '../components/Sections/Hero'
 import Intro from '../components/Sections/Intro'
 import Layout from '../components/Layout'
-import ParallaxEffect from '../components/ParallaxEffect'
 import Dream from '../components/Sections/Dream'
 import Format from '../components/Sections/Format'
 import LayoutSection from '../components/Sections/LayoutSection'
@@ -44,15 +47,6 @@ const Index = () => {
           break;
       }
     }
-      // ((window.pageYOffset>(wHeight*1.5))&&(window.pageYOffset<(wHeight*3.5))) ? setBgColor("#000000"): setBgColor("#ffffff"); 
-      // ((window.pageYOffset>(wHeight*1.5))&&(window.pageYOffset<(wHeight*3.5))) ? setTextColor("#ffffff"): setTextColor("#000000");
-      // ((window.pageYOffset>(wHeight*3.5))&&(window.pageYOffset<(wHeight*5.5))) ? setBgColor("#ffffff"): setBgColor("#000000"); 
-      // ((window.pageYOffset>(wHeight*3.5))&&(window.pageYOffset<(wHeight*5.5))) ? setTextColor("#000000"): setTextColor("#ffffff"); 
-      // ((window.pageYOffset>(wHeight*5.5))&&(window.pageYOffset<(wHeight*7.5))) ? setBgColor("#000000"): setBgColor("#ffffff"); 
-      // ((window.pageYOffset>(wHeight*5.5))&&(window.pageYOffset<(wHeight*7.5))) ? setTextColor("#ffffff"): setTextColor("#000000");
-      // (window.pageYOffset>(wHeight*7.5)) ? setBgColor("#ffffff"): setBgColor("#000000"); 
-      // (window.pageYOffset>(wHeight*7.5)) ? setTextColor("#000000"): setTextColor("#ffffff"); 
-      // }
   
   const handleResize = () => {
     setWHeight(window.innerHeight);
@@ -72,16 +66,26 @@ const Index = () => {
   }, []);
 
   return (
-    <Layout bgColor={bgColor} textColor={textColor}>
-      <Hero bgColor={bgColor} textColor={textColor}/>
-      <Intro bgColor={bgColor} textColor={textColor}/>
-      <Dream bgColor={bgColor} textColor={textColor}/>
-      <Format bgColor={bgColor} textColor={textColor}/>
-      <LayoutSection bgColor={bgColor} textColor={textColor}/>
-      <Content bgColor={bgColor} textColor={textColor}/>
-      <CTA bgColor={bgColor} textColor={textColor}/>
-    </Layout>
+    <IndexColorWrapper bgColor={bgColor} textColor={textColor}>
+      <Layout bgColor={bgColor} textColor={textColor}>
+        <Hero />
+        <Intro bgColor={bgColor} textColor={textColor}/>
+        <Dream bgColor={bgColor} textColor={textColor}/>
+        <Format bgColor={bgColor} textColor={textColor}/>
+        <LayoutSection bgColor={bgColor} textColor={textColor}/>
+        <Content bgColor={bgColor} textColor={textColor}/>
+        <CTA bgColor={bgColor} textColor={textColor}/>
+      </Layout>
+    </IndexColorWrapper>
   )
 }
 
 export default Index
+
+const IndexColorWrapper = styled.div`
+  background-color: ${props => props.bgColor};
+  color: ${props => props.textColor};
+  border-color: ${props => props.textColor};
+  transition: all ${variables.tr_duration};
+  /* transition: background-color 1s, border-color 1s, color 1s; */
+`
