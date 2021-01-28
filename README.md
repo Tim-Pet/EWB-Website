@@ -1,48 +1,25 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# EWB Website
+This is a private project for a friend in order to improve my knowledge and designing approach of websites. 
 
-## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
+## To Do
+- Add Form
+- Media Queries for Mobile
+- Clamp small text
+- Add Parallax 
+- Animate Text in sidebar
+- Add Scroll indicator
+- Add Navbar that appears when scrolled down to last page
+- Add animated icons
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Support welcome for:
+- Any advice is welcome anytime (!) but if someone would ask about my struggles here we go
+- Change Dream Section into a parallax section. 
+  - The 'big Text' should scroll slower than the 'small text' (This is just an example to learn how things work without setting up x scrolllistener & scroll  trigger)
+  - Spring example is following asap and linked here later on
+- Improvement of template
+- Improvement of my currently more or less hardcoded scrollTrigger which only work as intended since the sections are 100vh each
+- Repair resize eventListener in index.js
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
-
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
-
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.js` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Comments
+- Ignore SVGs for now, they are going to get implemented later in the process
