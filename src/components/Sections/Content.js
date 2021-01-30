@@ -119,6 +119,8 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: 0.5fr 1.25fr 0.125fr 0.125fr 1fr 0.5fr;
     z-index: 2;
+    overflow-x: hidden;
+    overflow-y: hidden;
     /* border: 2px solid red; */
 `
 const BigTextWrapper = styled.div`
