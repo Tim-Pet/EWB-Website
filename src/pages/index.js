@@ -14,12 +14,14 @@ import CTA from '../components/Sections/CTA'
 
 const Index = () => {
 
+  const [offsetY, setOffsetY] = useState(0);
   const [wHeight, setWHeight] = useState(window.innerHeight);
   const [bgColor, setBgColor] = useState('#ffffff');
   const [textColor, setTextColor] = useState('#000000');
   
 
   const handleScroll = () => {
+    setOffsetY(window.pageYOffset);
       switch(true){
         case (window.pageYOffset<(wHeight*1.5)):
           setBgColor("#ffffff");
@@ -46,6 +48,7 @@ const Index = () => {
           setTextColor("#000000");
           break;
       }
+      // console.log(offsetY);
     }
   
   const handleResize = () => {
@@ -57,7 +60,7 @@ const Index = () => {
       
     return () =>
       window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [offsetY]);
   
   useEffect(() => {
     window.addEventListener("resize", handleResize);

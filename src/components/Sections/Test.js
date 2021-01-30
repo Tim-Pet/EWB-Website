@@ -2,7 +2,7 @@ import React, {useRef, useEffect, useState} from 'react'
 import styled from 'styled-components'
 import * as variables from "../styles/variables"
 
-const Dream = (props) => {
+const Test = (props) => {
     const [offsetY, setOffsetY] = useState(0);
 
     const ref = useRef();
@@ -66,11 +66,11 @@ const Dream = (props) => {
     )
 }
 
-export default Dream
+export default Test
 
 const Container = styled.div`
-    height: 105vh;
-    padding-top: 10vh;
+    height: 120vh;
+    padding-top: 20vh;
     display: grid;
     grid-template-columns: 0.5fr 1.25fr 0.125fr 0.125fr 1fr 0.5fr;
     z-index: 2;
