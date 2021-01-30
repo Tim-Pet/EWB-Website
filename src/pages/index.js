@@ -11,8 +11,6 @@ import Format from '../components/Sections/Format'
 import LayoutSection from '../components/Sections/LayoutSection'
 import Content from '../components/Sections/Content'
 import CTA from '../components/Sections/CTA'
-import Test from '../components/Sections/Test'
-import FormatNew from '../components/Sections/FormatNew'
 
 const Index = () => {
 
@@ -76,7 +74,6 @@ const Index = () => {
         <Hero />
         <Intro bgColor={bgColor} textColor={textColor}/>
         <Dream bgColor={bgColor} textColor={textColor}/>
-        <FormatNew bgColor={bgColor} textColor={textColor}/>
         <Format bgColor={bgColor} textColor={textColor}/>
         <LayoutSection bgColor={bgColor} textColor={textColor}/>
         <Content bgColor={bgColor} textColor={textColor}/>
