@@ -9,8 +9,8 @@ import Layout from '../components/Layout'
 import Dream from '../components/Sections/Dream'
 import Format from '../components/Sections/Format'
 import LayoutSection from '../components/Sections/LayoutSection'
-import Content from '../components/Sections/Content'
 import CTA from '../components/Sections/CTA'
+import Content from '../components/Sections/Content'
 
 const Index = () => {
 

@@ -12,14 +12,7 @@ const Content = (props) => {
         'selbe',
         'Inhalt'
     ]
-    const smallText1 = 
-        [
-            line1a,
-            line1b,
-            line1c,
-            line1d,
-            line1e,
-    ]
+
     //content for smallText1
         const line1a = 
         [
@@ -41,14 +34,15 @@ const Content = (props) => {
         [
             'die den Lesefluss stören und schon interpretieren.'
         ]
-
-    const smallText2 = 
-        [
-            line2a,
-            line2b,
-            line2c,
-            line2d
+    const smallText1 = 
+    [
+        line1a,
+        line1b,
+        line1c,
+        line1d,
+        line1e,
     ]
+    
     // content for smallText2
         const line2a = 
         [
@@ -66,7 +60,13 @@ const Content = (props) => {
         [
             'Oder auch einfach mal zwischendurch.'
         ]
-
+    const smallText2 = 
+    [
+        line2a,
+        line2b,
+        line2c,
+        line2d
+    ]
 
     const handleScroll = () => {
         const vh = window.innerHeight;

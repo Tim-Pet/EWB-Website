@@ -45,7 +45,7 @@ const Format = (props) => {
     return (
         <div ref={ref}>
             <Container >
-                <BigTextWrapper style={{transform: `translateX(${offsetY* 0.2}px)`}}>
+                <BigTextWrapper >
                     {bigText.map((item, index) => (
                     <BigText textColor={props.textColor} key={index}>{item}</BigText>
                     ))}
@@ -83,7 +83,7 @@ const Container = styled.div`
 `
 const BigTextWrapper = styled.div`
     grid-row-start: 1;
-    grid-column: 2 / 3;
+    grid-column: 1 / 7;
 `
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
@@ -95,7 +95,7 @@ const BigText = styled.h1`
     letter-spacing: 4px;
     color: white;
     -webkit-text-stroke: 2px ${props => props.textColor};
-    text-align: right;
+    text-align: center;
 `
 
 const SmallTextContainer = styled.div`
