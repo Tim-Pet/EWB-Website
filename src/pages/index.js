@@ -11,15 +11,19 @@ import Format from '../components/Sections/Format'
 import LayoutSection from '../components/Sections/LayoutSection'
 import Content from '../components/Sections/Content'
 import CTA from '../components/Sections/CTA'
+import Test from '../components/Sections/Test'
+import FormatNew from '../components/Sections/FormatNew'
 
 const Index = () => {
 
+  const [offsetY, setOffsetY] = useState(0);
   const [wHeight, setWHeight] = useState(window.innerHeight);
   const [bgColor, setBgColor] = useState('#ffffff');
   const [textColor, setTextColor] = useState('#000000');
   
 
   const handleScroll = () => {
+    setOffsetY(window.pageYOffset);
       switch(true){
         case (window.pageYOffset<(wHeight*1.5)):
           setBgColor("#ffffff");
@@ -46,6 +50,7 @@ const Index = () => {
           setTextColor("#000000");
           break;
       }
+      // console.log(offsetY);
     }
   
   const handleResize = () => {
@@ -57,7 +62,7 @@ const Index = () => {
       
     return () =>
       window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [offsetY]);
   
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -71,6 +76,7 @@ const Index = () => {
         <Hero />
         <Intro bgColor={bgColor} textColor={textColor}/>
         <Dream bgColor={bgColor} textColor={textColor}/>
+        <FormatNew bgColor={bgColor} textColor={textColor}/>
         <Format bgColor={bgColor} textColor={textColor}/>
         <LayoutSection bgColor={bgColor} textColor={textColor}/>
         <Content bgColor={bgColor} textColor={textColor}/>
