@@ -14,11 +14,11 @@ This is a private project for a friend in order to improve my knowledge and desi
 
 ## Support welcome for:
 - Any advice is welcome anytime (!) but if someone would ask about my struggles here we go
-- Change Dream Section into a parallax section. 
+- Change Sections into a parallax section. 
   - The 'big Text' should scroll slower than the 'small text' (This is just an example to learn how things work without setting up x scrolllistener & scroll  trigger)
-  - Spring example is following asap and linked here later on --> move to localhost:8000/parallax to see an example of implemented React-Spring-Parallax
-  - Fully working Parallax Section Template has been added. Since React-Spring Parallax breaks the layout (forces position: absolute) another approach is needed & welcome at any time
-- Improvement of template
+  - Spring example --> move to localhost:8000/parallax to see an example of implemented React-Spring-Parallax
+  - Since React-Spring Parallax breaks the layout (forces position: absolute) another approach is used with scrollListeners. Further improvements welcome
+- Suggestions for better "templating"
 - Improvement of my currently more or less hardcoded scrollTrigger which only work as intended since the sections are 100vh each
 - Repair resize eventListener in index.js
 
