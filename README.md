@@ -6,7 +6,7 @@ This is a private project for a friend in order to improve my knowledge and desi
 - Add Form
 - Media Queries for Mobile
 - Clamp small text
-- Add Parallax 
+- <del>Add Parallax</del> 
 - Animate Text in sidebar
 - Add Scroll indicator
 - Add Navbar that appears when scrolled down to last page
