@@ -1,4 +1,4 @@
-import React, {useRef, useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import useIsInViewport from 'use-is-in-viewport'
 import { Parallax, Background } from 'react-parallax';
@@ -68,11 +68,9 @@ const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
                         }}
                 >
                     <Background>
-
                             {smallText1.map((item, index) => (
                                 <SmallText key={index} >{item}</SmallText>
-                            ))} {/**Parallax inner */}
-
+                            ))} 
 
                             {smallText2.map((item, index) => (
                                 <SmallText key={index} >{item}</SmallText>
