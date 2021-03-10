@@ -29,8 +29,10 @@ This is a project requested by a friend, so the texting is made by him.
 
 
 ## Learnings
-This Project had quite some ups & downs. I started of with the idea of Parallax and full Page color transitions. After coding both in vanilla js I experienced that changing things in a list of px-based breakpoints can be quite a pain. 
+This Project had quite some ups & downs. I started of with the idea of Parallax and full Page color transitions. After coding both in vanilla js I experienced that changing things in a list of px-based breakpoints can be quite a pain.
+
 So I wrapped things up and started over rebuilding all pages with react Spring, since I liked the way Elements keep scrolling a bit after stopping to do so. But the way elements get positioned didn't work as intended with the full page color transitions.
+
 After a short break which includes a new job @edyouacted I came back to the project with improved skills & rebuilt the website a third time.
 this time I used a combination of react-parallax and use-is-in-viewport and it worked just great.
 
