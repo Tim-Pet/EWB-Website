@@ -1,6 +1,7 @@
-import React, {useRef, useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import useIsInViewport from 'use-is-in-viewport'
+import { Parallax, Background } from 'react-parallax';
 
 import * as variables from "../styles/variables"
 
@@ -21,58 +22,61 @@ const Format = ({setBgColor, setTextColor, textColor}) => {
     ]
     const smallText2 = 
         [
-            'Test 2:Wir möchten die Bibel, die so zugänglich wie möglich ist – Deshalb präsentieren wir Ihre Vielfalt im Format von einzelnen Magazinen.',
-            'So können Texte individuell und charakterisiert veröeffentlicht werden, ohne dabei als dicker Schinken abzuschrecken oder zu überfordern.'
+            'Wir möchten die Bibel, die so zugänglich wie möglich ist – Deshalb präsentieren wir Ihre Vielfalt im Format von einzelnen Magazinen.'
     ]
 
-    const [offsetY, setOffsetY] = useState(0);
-
-    const ref = useRef();
 
     useEffect(() => {
-        setBgColor('#000000');
-        setTextColor('#ffffff');
+        if(isInViewport) {
+            setBgColor('#000000');
+            setTextColor('#ffffff');
+        }
     }, [isInViewport])
 
-    const handleScroll = () => {
-        const vh = window.innerHeight;
-        const posY = (ref.current.getBoundingClientRect().top*-1+(vh/2)); //sets to positive value if top border of container reaches the middle of the viewport
-        if (posY >= 0) {
-            setOffsetY(posY);
-        }
-        console.log(posY);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-        window.removeEventListener('scroll', handleScroll);
-        };
-    });
 
     return (
-        <div ref={ref} ref={targetRef}>
+        <div ref={targetRef}>
             <Container >
-                <BigTextWrapper >
-                    {bigText.map((item, index) => (
-                    <BigText textColor={textColor} key={index}>{item}</BigText>
-                    ))}
-                </BigTextWrapper>
-                <SmallTextContainer style={{transform: `translateX(${-offsetY* 1.8}px)`}}>
-                    <Spacer >                       
-                    </Spacer>
-                    <SmallTextWrapper > 
-                    {smallText1.map((item, index) => (
-                        <SmallText key={index} >{item}</SmallText>
-                    ))}
-                    </SmallTextWrapper>
-                    <SmallTextWrapper > 
-                        {smallText2.map((item, index) => (
+            <Parallax
+                    strength={300} 
+                    style={{
+                        gridColumn: '1 / 8',
+                        gridRow: '1',
+                        overflow: 'visible',
+                        marginTop: '30vh'
+                        }}
+                >
+                    <Background>
+                        {bigText.map((item, index) => (
+                        <BigText textColor={textColor} key={index}>{item}</BigText>
+                        ))}
+                    </Background>
+                </Parallax>
+
+                <Parallax 
+                    strength={-200} 
+                    style={{
+                        gridColumn: '3 / 11',
+                        gridRow: '1',
+                        marginTop: '10vh',
+                        overflow: 'visible'
+                        }}
+                >
+                    <Background>
+                        <SmallTextWrapper > 
+                        {smallText1.map((item, index) => (
                             <SmallText key={index} >{item}</SmallText>
                         ))}
-                    </SmallTextWrapper>
-                </SmallTextContainer>
+                        </SmallTextWrapper>
+                        <SmallTextWrapper > 
+                            {smallText2.map((item, index) => (
+                                <SmallText key={index} >{item}</SmallText>
+                            ))}
+                        </SmallTextWrapper>
+                    </Background>
+                </Parallax>
+
+
             </Container>
         </div>
     )
@@ -83,17 +87,11 @@ export default Format
 const Container = styled.div`
     position: relative;
     height: 100vh;
-    padding-top: 30vh;
+    margin-bottom: 10vh;
     display: grid;
-    grid-template-columns: 0.5fr 1.25fr 0.125fr 0.125fr 1fr 0.5fr;
-    z-index: 2;
-    overflow-x: hidden;
-    /* border: 2px solid red; */
+    grid-template-columns: 1fr 1fr 1fr 0.125fr 0.125fr 0.125fr 0.125fr 1fr 1fr 1fr;;
 `
-const BigTextWrapper = styled.div`
-    grid-row-start: 1;
-    grid-column: 1 / 7;
-`
+
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
     font-weight: ${variables.fw_bold};
@@ -107,21 +105,9 @@ const BigText = styled.h1`
     text-align: center;
 `
 
-const SmallTextContainer = styled.div`
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    top: 60%;
-    left: 0;
-    width: 170vw;
-    /* border: 2px solid blue; */
-`
 
 const SmallTextWrapper = styled.div`
-    min-width: 40vw;
-    max-width: 40vw;
-    /* border: 2px solid white; */
+    margin-bottom: 10vh;
 `
 const SmallText = styled.p`
     font-family: ${variables.f_primary};
@@ -129,10 +115,6 @@ const SmallText = styled.p`
     line-height: 2rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    padding-bottom: 30px;
+    padding-bottom: 5vh;
     /* border: 2px solid green; */
-`
-
-const Spacer = styled.div`
-    min-width: 30vw;
 `

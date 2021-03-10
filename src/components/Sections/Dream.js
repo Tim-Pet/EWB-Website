@@ -1,37 +1,20 @@
-import React, {useRef, useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
+import { Parallax, Background } from 'react-parallax';
 import styled from 'styled-components'
 import useIsInViewport from 'use-is-in-viewport'
 
 import * as variables from "../styles/variables"
 
 const Dream = ({setBgColor, setTextColor, textColor}) => {
-    const [offsetY, setOffsetY] = useState(0);
 
     const [isInViewport, targetRef] = useIsInViewport()
 
     useEffect(() => {
-        setBgColor('#000000');
-        setTextColor('#ffffff');
-    }, [isInViewport])
-
-    const ref = useRef();
-
-    const handleScroll = () => {
-        const vh = window.innerHeight;
-        const posY = (ref.current.getBoundingClientRect().top*-1)+vh; //sets to positive value if top border of conatainer reaches bottom of viewport
-        if (posY >= 0) {
-            setOffsetY(posY);
+        if(isInViewport) {
+            setBgColor('#000000');
+            setTextColor('#ffffff');
         }
-        console.log(posY);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-        window.removeEventListener('scroll', handleScroll);
-        };
-    });
+    }, [isInViewport])
 
     const bigText = 
         [
@@ -41,14 +24,14 @@ const Dream = ({setBgColor, setTextColor, textColor}) => {
 
     const smallText1 =
         [
-            <strong>Wir lieben unsere Generation</strong>,
+            <strong>Wir lieben unsere Generation</strong>,<br></br>,
             'Nicht, weil sie perfekt ist, doch weil wir an sie glauben: Wir glauben an eine Generation, die Jesus Christus kennlernen will und Ihn liebt.',
             'Deshalb wollen wir Ihn ihr vorstellen.'
         ]
 
     const smallText2 =
     [
-        ' Wir wollen eine Bibel, die besonders einladend füer jeden Einstieg & angenehm füers immer weiterlesen gestaltet ist.',
+        'Wir wollen eine Bibel, die besonders einladend für jeden Einstieg & angenehm fürs immer weiterlesen gestaltet ist.',
         'Und dabei unglaublich gut aussieht.'
     ]
 
@@ -59,17 +42,41 @@ const Dream = ({setBgColor, setTextColor, textColor}) => {
 
 
     return (
-        <div ref={ref, targetRef}>
+        <div ref={targetRef}>
             <Container >
-                <BigTextWrapper style={{transform: `translateY(${offsetY * 0.4}px)`}}>
-                    {bigText.map((item, index) => (
-                    <BigText textColor={textColor} key={index}>{item}</BigText>
-                    ))}
-                </BigTextWrapper>
-                <SmallTextWrapper > {/** style={{transform: `translateY(-${props.offsetY * 0.5}px)`}} */} {/**Parallax outer */}
-                    <SmallText>{smallText1}</SmallText> {/**Parallax inner */}
-                    <SmallText>{smallText2}</SmallText>
-                </SmallTextWrapper>
+                <Parallax
+                    strength={300} 
+                    style={{
+                        gridColumn: '1 / 8',
+                        gridRow: '1',
+                        overflow: 'visible',
+                        marginTop: '30vh'
+                        }}
+                >
+                    <Background>
+                        <BigTextWrapper >
+                            {bigText.map((item, index) => (
+                            <BigText textColor={textColor} key={index}>{item}</BigText>
+                            ))}
+                        </BigTextWrapper>
+                    </Background>
+                </Parallax>
+                <Parallax 
+                    strength={-200} 
+                    style={{
+                        gridColumn: '3 / 11',
+                        gridRow: '1',
+                        marginTop: '10vh',
+                        overflow: 'visible'
+                        }}
+                >
+                    <Background>
+                        <SmallTextWrapper > 
+                            <SmallText>{smallText1}</SmallText>
+                            <SmallText>{smallText2}</SmallText>
+                        </SmallTextWrapper>
+                    </Background>
+                </Parallax>
             </Container>
         </div>
     )
@@ -79,15 +86,13 @@ export default Dream
 
 const Container = styled.div`
     height: 105vh;
-    padding-top: 10vh;
+    margin-top: 20vh;
+    margin-bottom: 10vh;
     display: grid;
-    grid-template-columns: 0.5fr 1.25fr 0.125fr 0.125fr 1fr 0.5fr;
-    z-index: 2;
+    grid-template-columns: 1fr 1fr 1fr 0.125fr 0.125fr 0.125fr 0.125fr 1fr 1fr 1fr;
     /* border: 2px solid red; */
 `
 const BigTextWrapper = styled.div`
-    grid-row-start: 1;
-    grid-column: 2 / 3;
 `
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
@@ -102,15 +107,15 @@ const BigText = styled.h1`
     text-align: right;
 `
 const SmallTextWrapper = styled.div`
-    padding-top: 30vh;
+    /* padding-top: 30vh;
     grid-column: 4 / 6;
-    grid-row-start: 1;
+    grid-row-start: 1; */
 `
 const SmallText = styled.p`
     font-family: ${variables.f_primary};
     font-size: 1.125rem;
     line-height: 2rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 30vh;
+    
+    margin-bottom: 25vh;
 `

@@ -1,37 +1,22 @@
 import React, {useRef, useEffect, useState} from 'react'
 import styled from 'styled-components'
 import useIsInViewport from 'use-is-in-viewport'
+import { Parallax, Background } from 'react-parallax';
 
 import * as variables from "../styles/variables"
 
 const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
-    const [offsetY, setOffsetY] = useState(0);
 
     const [isInViewport, targetRef] = useIsInViewport()
 
-    const ref = useRef();
 
     useEffect(() => {
-        setBgColor('#ffffff');
-        setTextColor('#000000');
+        if(isInViewport) {
+            setBgColor('#ffffff');
+            setTextColor('#000000');
+        }
     }, [isInViewport])
 
-    const handleScroll = () => {
-        const vh = window.innerHeight;
-        const posY = (ref.current.getBoundingClientRect().top*-1)+vh; //sets to positive value if top border of conatainer reaches bottom of viewport
-        if (posY >= 0) {
-            setOffsetY(posY);
-        }
-        console.log(posY);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-        window.removeEventListener('scroll', handleScroll);
-        };
-    });
 
     const bigText = 
         [
@@ -43,7 +28,7 @@ const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
     const smallText1 = 
         [
             <strong>Form Follows Content</strong>,
-           ' Ein Reichtum der Textformen von Song-Lyrics, über persönliche Briefe und Gesprächen, bis hin zu juristischen Texten, lädt regelrecht dazu ein, in selbsterkläerenden Layouts präsentiert zu werden.',
+           'Ein Reichtum der Textformen von Song-Lyrics, über persönliche Briefe und Gesprächen, bis hin zu juristischen Texten, lädt regelrecht dazu ein, in selbsterklärenden Layouts präsentiert zu werden.',
            'So können Texte individuell und charakterisiert veröeffentlicht werden, ohne dabei als dicker Schinken abzuschrecken oder zu überfordern.'
     ]
 
@@ -55,24 +40,51 @@ const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
 
 
     return (
-        <div ref={ref} ref={targetRef}>
+        <div ref={targetRef}>
             <Container >
-                <BigTextWrapper style={{transform: `translateY(${offsetY * 0.4}px)`}}>
-                    {bigText.map((item, index) => (
-                    <BigText textColor={textColor} key={index}>{item}</BigText>
-                    ))}
-                </BigTextWrapper>
-                <SmallTextWrapper>
-                    {smallText1.map((item, index) => (
-                        <SmallText key={index} >{item}</SmallText>
-                    ))} {/**Parallax inner */}
-                </SmallTextWrapper>
+            <Parallax
+                    strength={300} 
+                    style={{
+                        gridColumn: '9 / 10',
+                        gridRow: '1',
+                        overflow: 'visible',
+                        marginTop: '30vh'
+                        }}
+                >
+                    <Background>
+                        <BigTextWrapper>
+                            {bigText.map((item, index) => (
+                            <BigText textColor={textColor} key={index}>{item}</BigText>
+                            ))}
+                        </BigTextWrapper>
+                    </Background>
+                </Parallax>
 
-                <SmallTextWrapper > {/** style={{transform: `translateY(-${props.offsetY * 0.5}px)`}} */} {/**Parallax outer */}
-                    {smallText2.map((item, index) => (
-                        <SmallText key={index} >{item}</SmallText>
-                    ))}
-                </SmallTextWrapper>
+                <Parallax 
+                    strength={-200} 
+                    style={{
+                        gridColumn: '1 / 9',
+                        gridRow: '1',
+                        marginTop: '10vh',
+                        overflow: 'visible'
+                        }}
+                >
+                    <Background>
+                        <SmallTextWrapper>
+                            {smallText1.map((item, index) => (
+                                <SmallText key={index} >{item}</SmallText>
+                            ))} {/**Parallax inner */}
+                        </SmallTextWrapper>
+
+                        <SmallTextWrapper > {/** style={{transform: `translateY(-${props.offsetY * 0.5}px)`}} */} {/**Parallax outer */}
+                            {smallText2.map((item, index) => (
+                                <SmallText key={index} >{item}</SmallText>
+                            ))}
+                        </SmallTextWrapper>
+                    </Background>
+                </Parallax>
+
+
             </Container>
         </div>
     )
@@ -81,16 +93,13 @@ const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
 export default LayoutSection
 
 const Container = styled.div`
-    height: 105vh;
-    padding-top: 10vh;
+    min-height: 105vh;
     display: grid;
-    grid-template-columns: 0.5fr 1.25fr 0.125fr 0.125fr 1fr 0.5fr;
-    z-index: 2;
+    grid-template-columns: 1fr 1fr 1fr 0.125fr 0.125fr 0.125fr 0.125fr 1fr 1fr 1fr;
     /* border: 2px solid red; */
 `
 const BigTextWrapper = styled.div`
-    grid-row-start: 1;
-    grid-column: 4 / 6;
+
 `
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
@@ -104,8 +113,7 @@ const BigText = styled.h1`
     -webkit-text-stroke: 2px ${props => props.textColor};
 `
 const SmallTextWrapper = styled.div`
-    padding-top: 30vh;
-    grid-column: 2 / 3;
+
 `
 const SmallText = styled.p`
     font-family: ${variables.f_primary};

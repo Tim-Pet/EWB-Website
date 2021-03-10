@@ -8,8 +8,10 @@ const Intro = ({setBgColor, setTextColor, textColor}) => {
     const [isInViewport, targetRef] = useIsInViewport()
 
     useEffect(() => {
-        setBgColor('#000');
-        setTextColor('#fff');
+        if(isInViewport) {
+            setBgColor('#fff');
+            setTextColor('#000');
+        }
     }, [isInViewport])
 
     const bigText = 

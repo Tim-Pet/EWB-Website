@@ -20,8 +20,10 @@ const CTA = ({setBgColor, setTextColor, textColor}) => {
     ]
     
     useEffect(() => {
-        setBgColor('#000000');
-        setTextColor('#ffffff');
+        if(isInViewport) {
+            setBgColor('#000');
+            setTextColor('#fff');
+        }
     }, [isInViewport])
 
     return (

@@ -1,15 +1,14 @@
-import React, {useRef, useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import useIsInViewport from 'use-is-in-viewport'
+import { Parallax, Background } from 'react-parallax';
 
 import * as variables from "../styles/variables"
 
 const Content = ({setBgColor, setTextColor, textColor}) => {
-    const [offsetY, setOffsetY] = useState(0);
 
     const [isInViewport, targetRef] = useIsInViewport()
 
-    const ref = useRef();
 
     const bigText = 
     [
@@ -73,36 +72,44 @@ const Content = ({setBgColor, setTextColor, textColor}) => {
         line2d
     ]
 
-    const handleScroll = () => {
-        const vh = window.innerHeight;
-        const posY = (ref.current.getBoundingClientRect().top*-1)+(vh/1.8); //sets to positive value if top border of container reaches nearly half of viewport
-        if (posY >= 0) {
-            setOffsetY(posY);
+    useEffect(() => {
+        if(isInViewport) {
+            setBgColor('#ffffff');
+            setTextColor('#000000');
         }
-        console.log(posY);
-    };
-
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-        window.removeEventListener('scroll', handleScroll);
-        };
-    });
-    useEffect(() => {
-        setBgColor('#ffffff');
-        setTextColor('#000000');
     }, [isInViewport])
 
     return (
-        <div ref={ref} ref={targetRef}>
+        <div ref={targetRef}>
             <Container >
-                <BigTextWrapper style={{transform: `translateY(${offsetY * 0.3}px) translateX(${-offsetY * 0.1}px)`}}> 
-                    {bigText.map((item, index) => (
-                    <BigText textColor={textColor} key={index}>{item}</BigText>
-                    ))}
-                </BigTextWrapper>
-                <SmallTextContainer style={{transform: `translateX(${offsetY * 0.1}px) skew(-30deg)`}}>
+            <Parallax
+                    strength={300} 
+                    style={{
+                        gridColumn: '9 / 10',
+                        overflow: 'visible',
+                        gridRow: '1',
+                        marginTop: '30vh'
+                        }}
+                >
+                    <Background>
+                        <BigTextWrapper> 
+                            {bigText.map((item, index) => (
+                            <BigText textColor={textColor} key={index}>{item}</BigText>
+                            ))}
+                        </BigTextWrapper>
+                    </Background>
+                </Parallax>
+
+                <Parallax 
+                    strength={-200} 
+                    style={{
+                        gridColumn: '1 / 9',
+                        gridRow: '1',
+                        marginTop: '10vh',
+                        overflow: 'visible'
+                        }}
+                >
+                    <Background>
                     <SmallTextWrapper>
                         {smallText1.map((item, index) => (
                             <SmallText key={index} >{item}</SmallText>
@@ -114,7 +121,8 @@ const Content = ({setBgColor, setTextColor, textColor}) => {
                             <SmallText key={index} >{item}</SmallText>
                         ))}
                     </SmallTextWrapper>
-                </SmallTextContainer>
+                    </Background>
+                </Parallax>
             </Container>
         </div>
     )
@@ -123,14 +131,10 @@ const Content = ({setBgColor, setTextColor, textColor}) => {
 export default Content
 
 const Container = styled.div`
-    height: 80vh;
-    margin-top: 20vh;
+    height: 100vh;
+    
     display: grid;
-    grid-template-columns: 0.5fr 1.25fr 0.125fr 0.125fr 1fr 0.5fr;
-    z-index: 2;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    /* border: 2px solid red; */
+    grid-template-columns: 1fr 1fr 1fr 0.125fr 0.125fr 0.125fr 0.125fr 1fr 1fr 1fr;
 `
 const BigTextWrapper = styled.div`
     grid-row-start: 1;
@@ -147,13 +151,8 @@ const BigText = styled.h1`
     letter-spacing: 4px;
     color: white;
     -webkit-text-stroke: 2px ${props => props.textColor};
-    text-align: right;
 `
 
-const SmallTextContainer= styled.div`
-    grid-column: 3 / 7;
-    grid-row-start: 1;
-`
 
 const SmallTextWrapper = styled.div`
     padding-top: 20vh;
@@ -164,5 +163,4 @@ const SmallText = styled.p`
     line-height: 2.25rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transform: skew(30deg);
 `

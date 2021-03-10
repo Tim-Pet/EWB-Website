@@ -5,11 +5,13 @@ import useIsInViewport from 'use-is-in-viewport'
 import * as variables from "../styles/variables"
 
 const Hero = ({setBgColor, setTextColor}) => {
-    const [isInViewport, targetRef] = useIsInViewport()
+    const [isInViewport, targetRef] = useIsInViewport(false)
 
     useEffect(() => {
-        setBgColor('#ffffff');
-        setTextColor('#000000');
+        if(isInViewport) {
+            setBgColor('#ffffff');
+            setTextColor('#000000');
+        }
     }, [isInViewport])
 
     return (
