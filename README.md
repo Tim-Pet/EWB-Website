@@ -1,26 +1,49 @@
 # EWB Website
-This is a private project for a friend in order to improve my knowledge and designing approach of websites. 
+This is a project requested by a friend, so the texting is made by him.
 
 
-## To Do
-- Add Form
-- Media Queries for Mobile
-- Clamp small text
-- <del>Add Parallax</del> 
-- Animate Text in sidebar
-- Add Scroll indicator
-- Add Navbar that appears when scrolled down to last page
-- Add animated icons
+## Goal
+- This project should challenge me to dive into new Topics/Plugins and improve my workflow in learning with documentation
+- My personal goal for this project was to learn how parallax works and get full Page color transitions
+- Write a page templates before starting into the specific pages
 
-## Support welcome for:
-- Any advice is welcome anytime (!) but if someone would ask about my struggles here we go
-- Change Sections into a parallax section. 
-  - The 'big Text' should scroll slower than the 'small text' (This is just an example to learn how things work without setting up x scrolllistener & scroll  trigger)
-  - Spring example --> move to localhost:8000/parallax to see an example of implemented React-Spring-Parallax
-  - Since React-Spring Parallax breaks the layout (forces position: absolute) another approach is used with scrollListeners. Further improvements welcome
-- Suggestions for better "templating"
-- Improvement of my currently more or less hardcoded scrollTrigger which only work as intended since the sections are 100vh each
-- Repair resize eventListener in index.js
 
-## Comments
-- Ignore SVGs for now, they are going to get implemented later in the process
+## Result
+### Page showcase
+<img src="./showcase/page_showcase.png" width="900" />
+
+#### Page look & feel showcase
+<img src="./showcase/page_showcase.gif" width="500" />
+
+#### Personal highlight
+<img src="./showcase/button_showcase.gif" width="500" />
+
+
+## Tools & Libraries used
+- React
+- Gatsby
+- styled Components
+- react-parallax
+- use-is-in-viewport (personal favorite)
+
+
+## Learnings
+This Project had quite some ups & downs. I started of with the idea of Parallax and full Page color transitions. After coding both in vanilla js I experienced that changing things in a list of px-based breakpoints can be quite a pain. 
+So I wrapped things up and started over rebuilding all pages with react Spring, since I liked the way Elements keep scrolling a bit after stopping to do so. But the way elements get positioned didn't work as intended with the full page color transitions.
+After a short break which includes a new job @edyouacted I came back to the project with improved skills & rebuilt the website a third time.
+this time I used a combination of react-parallax and use-is-in-viewport and it worked just great.
+
+Tl:dr
+- As cool as vanilla js can be, sometimes Plugins give some serious quality of life upgrades.
+- A deeper dive into documentations can save a lot of work & time
+- A good selfmade template feels just about right to have - I will definitly stick with them.
+
+### New:
+- PARALLAX (!Yeah caps is intended!)
+- Viewport based animations with use-is-in-viewport
+- Basics with React Spring
+- Full Page Animations which affect all components
+
+## Next Steps
+- Improve Micro Animations (That Button gave me chills everytime I looked at it)
+- Expand my Tech Stack (Vue might be next)
