@@ -54,11 +54,9 @@ const Dream = ({setBgColor, setTextColor, textColor}) => {
                         }}
                 >
                     <Background>
-                        <BigTextWrapper >
-                            {bigText.map((item, index) => (
-                            <BigText textColor={textColor} key={index}>{item}</BigText>
-                            ))}
-                        </BigTextWrapper>
+                        {bigText.map((item, index) => (
+                        <BigText textColor={textColor} key={index}>{item}</BigText>
+                        ))}
                     </Background>
                 </Parallax>
                 <Parallax 
@@ -71,10 +69,8 @@ const Dream = ({setBgColor, setTextColor, textColor}) => {
                         }}
                 >
                     <Background>
-                        <SmallTextWrapper > 
-                            <SmallText>{smallText1}</SmallText>
-                            <SmallText>{smallText2}</SmallText>
-                        </SmallTextWrapper>
+                        <SmallText>{smallText1}</SmallText>
+                        <SmallText>{smallText2}</SmallText>
                     </Background>
                 </Parallax>
             </Container>
@@ -90,9 +86,6 @@ const Container = styled.div`
     margin-bottom: 10vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 0.125fr 0.125fr 0.125fr 0.125fr 1fr 1fr 1fr;
-    /* border: 2px solid red; */
-`
-const BigTextWrapper = styled.div`
 `
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
@@ -106,16 +99,10 @@ const BigText = styled.h1`
     -webkit-text-stroke: 2px ${props => props.textColor};
     text-align: right;
 `
-const SmallTextWrapper = styled.div`
-    /* padding-top: 30vh;
-    grid-column: 4 / 6;
-    grid-row-start: 1; */
-`
 const SmallText = styled.p`
     font-family: ${variables.f_primary};
     font-size: 1.125rem;
     line-height: 2rem;
     letter-spacing: 1px;
-    
     margin-bottom: 25vh;
 `

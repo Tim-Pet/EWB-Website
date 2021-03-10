@@ -35,7 +35,7 @@ const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
     const smallText2 = 
         [
             'Font Matters – Denn die Bibeltexte lesen sich am besten, wenn die Textform erkennbar dargestellt ist. Also braucht jede Textgattung eine spezifische Schriftart.',
-            'Und immer wieder gibt es besondere Säetze, die danach schreien, besonders dargestellt zu werden. Diese verdienen eine besondere typografische Darstellung.'
+            'Und immer wieder gibt es besondere Sätze, die danach schreien, besonders dargestellt zu werden. Diese verdienen eine besondere typografische Darstellung.'
     ]
 
 
@@ -52,11 +52,9 @@ const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
                         }}
                 >
                     <Background>
-                        <BigTextWrapper>
-                            {bigText.map((item, index) => (
-                            <BigText textColor={textColor} key={index}>{item}</BigText>
-                            ))}
-                        </BigTextWrapper>
+                        {bigText.map((item, index) => (
+                        <BigText textColor={textColor} key={index}>{item}</BigText>
+                        ))}
                     </Background>
                 </Parallax>
 
@@ -70,17 +68,15 @@ const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
                         }}
                 >
                     <Background>
-                        <SmallTextWrapper>
+
                             {smallText1.map((item, index) => (
                                 <SmallText key={index} >{item}</SmallText>
                             ))} {/**Parallax inner */}
-                        </SmallTextWrapper>
 
-                        <SmallTextWrapper > {/** style={{transform: `translateY(-${props.offsetY * 0.5}px)`}} */} {/**Parallax outer */}
+
                             {smallText2.map((item, index) => (
                                 <SmallText key={index} >{item}</SmallText>
                             ))}
-                        </SmallTextWrapper>
                     </Background>
                 </Parallax>
 
@@ -96,11 +92,8 @@ const Container = styled.div`
     min-height: 105vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 0.125fr 0.125fr 0.125fr 0.125fr 1fr 1fr 1fr;
-    /* border: 2px solid red; */
 `
-const BigTextWrapper = styled.div`
 
-`
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
     font-weight: ${variables.fw_bold};
@@ -112,15 +105,12 @@ const BigText = styled.h1`
     color: white;
     -webkit-text-stroke: 2px ${props => props.textColor};
 `
-const SmallTextWrapper = styled.div`
 
-`
 const SmallText = styled.p`
     font-family: ${variables.f_primary};
     font-size: 1.125rem;
     line-height: 2rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
     text-align: right;
     margin-bottom: 20px;
 `

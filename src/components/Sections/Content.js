@@ -132,13 +132,10 @@ export default Content
 
 const Container = styled.div`
     height: 100vh;
-    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 0.125fr 0.125fr 0.125fr 0.125fr 1fr 1fr 1fr;
 `
 const BigTextWrapper = styled.div`
-    grid-row-start: 1;
-    grid-column: 2 / 3;
     padding-top: 15vh;
 `
 const BigText = styled.h1`
@@ -153,7 +150,6 @@ const BigText = styled.h1`
     -webkit-text-stroke: 2px ${props => props.textColor};
 `
 
-
 const SmallTextWrapper = styled.div`
     padding-top: 20vh;
 `
@@ -162,5 +158,4 @@ const SmallText = styled.p`
     font-size: 1.125rem;
     line-height: 2.25rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
 `

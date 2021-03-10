@@ -42,7 +42,6 @@ const BigTextWrapper = styled.div`
     padding-top: 40vh;
     grid-row-start: 1;
     grid-column: 2 / 4;
-    /* border: 2px solid red; */
 `
 const BigText = styled.h1`
     font-family: ${variables.f_primary};
@@ -58,11 +57,9 @@ const SmallTextWrapper = styled.div`
     padding-top: 73vh;
     grid-column: 3 / 5;
     grid-row-start: 1;
-    /* border: 2px solid black; */
 `
 const SmallText = styled.p`
     font-family: ${variables.f_primary};
-    /* font-weight: ${variables.fw_bold}; */
     text-transform: uppercase;
     font-size: 1.125rem;
     letter-spacing: 5px;
