@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import useIsInViewport from 'use-is-in-viewport'
+
 import PageTemplate from '../PageTemplate'
 
-const CTA = (props) => {
+const CTA = ({setBgColor, setTextColor, textColor}) => {
+
+    const [isInViewport, targetRef] = useIsInViewport()
 
     const bigText = 
         [
@@ -15,10 +19,14 @@ const CTA = (props) => {
         'Wir freuen uns auf Dich und Dein Portfolio oder Showreel. Und auch über Fragen nach mehr Infos.'
     ]
     
+    useEffect(() => {
+        setBgColor('#000000');
+        setTextColor('#ffffff');
+    }, [isInViewport])
 
     return (
-        <div>
-            <PageTemplate bgColor={props.bgColor} textColor={props.textColor} bigText={bigText} smallText={smallText1} />
+        <div ref={targetRef}>
+            <PageTemplate textColor={textColor} bigText={bigText} smallText={smallText1} />
         </div>
     )
 }

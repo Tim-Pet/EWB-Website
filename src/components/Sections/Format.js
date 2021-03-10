@@ -1,9 +1,13 @@
 import React, {useRef, useEffect, useState} from 'react'
 import styled from 'styled-components'
+import useIsInViewport from 'use-is-in-viewport'
+
 import * as variables from "../styles/variables"
 
-const Format = (props) => {
+const Format = ({setBgColor, setTextColor, textColor}) => {
 
+    const [isInViewport, targetRef] = useIsInViewport()
+    
     const bigText = 
         [
             'Ein', 
@@ -25,6 +29,11 @@ const Format = (props) => {
 
     const ref = useRef();
 
+    useEffect(() => {
+        setBgColor('#000000');
+        setTextColor('#ffffff');
+    }, [isInViewport])
+
     const handleScroll = () => {
         const vh = window.innerHeight;
         const posY = (ref.current.getBoundingClientRect().top*-1+(vh/2)); //sets to positive value if top border of container reaches the middle of the viewport
@@ -43,11 +52,11 @@ const Format = (props) => {
     });
 
     return (
-        <div ref={ref}>
+        <div ref={ref} ref={targetRef}>
             <Container >
                 <BigTextWrapper >
                     {bigText.map((item, index) => (
-                    <BigText textColor={props.textColor} key={index}>{item}</BigText>
+                    <BigText textColor={textColor} key={index}>{item}</BigText>
                     ))}
                 </BigTextWrapper>
                 <SmallTextContainer style={{transform: `translateX(${-offsetY* 1.8}px)`}}>

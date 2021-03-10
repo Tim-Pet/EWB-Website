@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import useIsInViewport from 'use-is-in-viewport'
+
 import PageTemplate from '../PageTemplate'
 
-const Intro = (props) => {
+const Intro = ({setBgColor, setTextColor, textColor}) => {
     
+    const [isInViewport, targetRef] = useIsInViewport()
+
+    useEffect(() => {
+        setBgColor('#000');
+        setTextColor('#fff');
+    }, [isInViewport])
+
     const bigText = 
         [
             'Und', 
@@ -16,8 +25,8 @@ const Intro = (props) => {
         ]
 
     return (
-        <div>
-            <PageTemplate bgColor={props.bgColor} textColor={props.textColor} bigText={bigText} smallText={smallText1}/>
+        <div ref={targetRef}>
+            <PageTemplate textColor={textColor} bigText={bigText} smallText={smallText1}/>
         </div>
     )
 }

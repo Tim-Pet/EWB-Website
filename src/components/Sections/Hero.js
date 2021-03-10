@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import useIsInViewport from 'use-is-in-viewport'
+
 import * as variables from "../styles/variables"
 
-const Hero = () => {
+const Hero = ({setBgColor, setTextColor}) => {
+    const [isInViewport, targetRef] = useIsInViewport()
+
+    useEffect(() => {
+        setBgColor('#ffffff');
+        setTextColor('#000000');
+    }, [isInViewport])
+
     return (
-        <div>
-            <HeroContainer>
+        <div ref={targetRef}>
+            <HeroContainer >
                 <BigTextWrapper>
                     <BigText>Dies ist</BigText>
                     <BigText>noch ein</BigText>

@@ -1,11 +1,20 @@
 import React, {useRef, useEffect, useState} from 'react'
 import styled from 'styled-components'
+import useIsInViewport from 'use-is-in-viewport'
+
 import * as variables from "../styles/variables"
 
-const LayoutSection = (props) => {
+const LayoutSection = ({setBgColor, setTextColor, textColor}) => {
     const [offsetY, setOffsetY] = useState(0);
 
+    const [isInViewport, targetRef] = useIsInViewport()
+
     const ref = useRef();
+
+    useEffect(() => {
+        setBgColor('#ffffff');
+        setTextColor('#000000');
+    }, [isInViewport])
 
     const handleScroll = () => {
         const vh = window.innerHeight;
@@ -46,11 +55,11 @@ const LayoutSection = (props) => {
 
 
     return (
-        <div ref={ref}>
+        <div ref={ref} ref={targetRef}>
             <Container >
                 <BigTextWrapper style={{transform: `translateY(${offsetY * 0.4}px)`}}>
                     {bigText.map((item, index) => (
-                    <BigText textColor={props.textColor} key={index}>{item}</BigText>
+                    <BigText textColor={textColor} key={index}>{item}</BigText>
                     ))}
                 </BigTextWrapper>
                 <SmallTextWrapper>

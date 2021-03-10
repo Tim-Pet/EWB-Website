@@ -1,9 +1,18 @@
 import React, {useRef, useEffect, useState} from 'react'
 import styled from 'styled-components'
+import useIsInViewport from 'use-is-in-viewport'
+
 import * as variables from "../styles/variables"
 
-const Dream = (props) => {
+const Dream = ({setBgColor, setTextColor, textColor}) => {
     const [offsetY, setOffsetY] = useState(0);
+
+    const [isInViewport, targetRef] = useIsInViewport()
+
+    useEffect(() => {
+        setBgColor('#000000');
+        setTextColor('#ffffff');
+    }, [isInViewport])
 
     const ref = useRef();
 
@@ -37,11 +46,11 @@ const Dream = (props) => {
             'Deshalb wollen wir Ihn ihr vorstellen.'
         ]
 
-        const smallText2 =
-        [
-           ' Wir wollen eine Bibel, die besonders einladend füer jeden Einstieg & angenehm füers immer weiterlesen gestaltet ist.',
-            'Und dabei unglaublich gut aussieht.'
-        ]
+    const smallText2 =
+    [
+        ' Wir wollen eine Bibel, die besonders einladend füer jeden Einstieg & angenehm füers immer weiterlesen gestaltet ist.',
+        'Und dabei unglaublich gut aussieht.'
+    ]
 
     const smallText = [
         smallText1,
@@ -50,11 +59,11 @@ const Dream = (props) => {
 
 
     return (
-        <div ref={ref}>
+        <div ref={ref, targetRef}>
             <Container >
                 <BigTextWrapper style={{transform: `translateY(${offsetY * 0.4}px)`}}>
                     {bigText.map((item, index) => (
-                    <BigText textColor={props.textColor} key={index}>{item}</BigText>
+                    <BigText textColor={textColor} key={index}>{item}</BigText>
                     ))}
                 </BigTextWrapper>
                 <SmallTextWrapper > {/** style={{transform: `translateY(-${props.offsetY * 0.5}px)`}} */} {/**Parallax outer */}

@@ -1,9 +1,14 @@
 import React, {useRef, useEffect, useState} from 'react'
 import styled from 'styled-components'
+import useIsInViewport from 'use-is-in-viewport'
+
 import * as variables from "../styles/variables"
 
-const Content = (props) => {
+const Content = ({setBgColor, setTextColor, textColor}) => {
     const [offsetY, setOffsetY] = useState(0);
+
+    const [isInViewport, targetRef] = useIsInViewport()
+
     const ref = useRef();
 
     const bigText = 
@@ -84,13 +89,17 @@ const Content = (props) => {
         window.removeEventListener('scroll', handleScroll);
         };
     });
+    useEffect(() => {
+        setBgColor('#ffffff');
+        setTextColor('#000000');
+    }, [isInViewport])
 
     return (
-        <div ref={ref}>
+        <div ref={ref} ref={targetRef}>
             <Container >
                 <BigTextWrapper style={{transform: `translateY(${offsetY * 0.3}px) translateX(${-offsetY * 0.1}px)`}}> 
                     {bigText.map((item, index) => (
-                    <BigText textColor={props.textColor} key={index}>{item}</BigText>
+                    <BigText textColor={textColor} key={index}>{item}</BigText>
                     ))}
                 </BigTextWrapper>
                 <SmallTextContainer style={{transform: `translateX(${offsetY * 0.1}px) skew(-30deg)`}}>
@@ -100,7 +109,7 @@ const Content = (props) => {
                         ))}
                     </SmallTextWrapper>
 
-                    <SmallTextWrapper >
+                    <SmallTextWrapper>
                         {smallText2.map((item, index) => (
                             <SmallText key={index} >{item}</SmallText>
                         ))}
