@@ -9,5 +9,6 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: ${variables.f_primary};
         scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
     }
 `

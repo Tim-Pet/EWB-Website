@@ -56,6 +56,5 @@ const SmallText = styled.p`
     font-size: 1.125rem;
     line-height: 2rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
     margin-bottom: 1.5rem;
 `
