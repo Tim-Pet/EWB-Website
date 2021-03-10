@@ -14,6 +14,7 @@ This is a project requested by a friend, so the texting is made by him.
 
 #### Page look & feel showcase
 <img src="./showcase/page_showcase.gif" width="500" />
+(The stuttering is the result of the scroll speed my mouse uses)
 
 #### Personal highlight
 <img src="./showcase/button_showcase.gif" width="500" />
@@ -39,7 +40,7 @@ Tl:dr
 - A good selfmade template feels just about right to have - I will definitly stick with them.
 
 ### New:
-- PARALLAX (!Yeah caps is intended!)
+- PARALLAX (!Yeah caps are intended!)
 - Viewport based animations with use-is-in-viewport
 - Basics with React Spring
 - Full Page Animations which affect all components
