@@ -3,9 +3,9 @@ This is a project requested by a friend, so the texting is made by him.
 
 
 ## Goal
-- This project should challenge me to dive into new Topics/Plugins and improve my workflow in learning with documentation
+- This project was supposed to challenge me to dive into new Topics/Plugins and improve my workflow in learning with documentation
 - My personal goal for this project was to learn how parallax works and get full Page color transitions
-- Write a page templates before starting into the specific pages
+- Write a page template before starting into the specific pages
 
 
 ## Result
