@@ -39,7 +39,7 @@ this time I used a combination of react-parallax and use-is-in-viewport and it w
 Tl:dr
 - As cool as vanilla js can be, sometimes Plugins give some serious quality of life upgrades.
 - A deeper dive into documentations can save a lot of work & time
-- A good selfmade template feels just about right to have - I will definitly stick with them.
+- A good selfmade template feels just about right to have - I will definitely stick with them.
 
 ### New:
 - PARALLAX (!Yeah caps are intended!)
